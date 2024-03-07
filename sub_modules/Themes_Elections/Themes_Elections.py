@@ -2,8 +2,6 @@
 
 import pickle
 import pandas as pd
-#from spt_preproc import PreprocText
-#tp = PreprocText()
 from sentence_transformers import SentenceTransformer
 encoder = SentenceTransformer('intfloat/multilingual-e5-large')
 

@@ -1,7 +1,6 @@
 
 import streamlit as st
 import pickle
-import nel_model
 
 
 st.title('NEL model')
