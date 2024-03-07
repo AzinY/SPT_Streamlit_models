@@ -1,14 +1,14 @@
 
-
+import os
 import pickle
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 encoder = SentenceTransformer('intfloat/multilingual-e5-large')
 
-with open('LR_Elections_Theme.pickle', 'rb') as f:
+with open(os.path.abspath(os.path.join(os.path.dirname(__file__),'LR_Elections_Theme.pickle')), 'rb') as f:
     clf = pickle.load(f)
     
-with open('pca_transformer.pickle', 'rb') as f:
+with open(os.path.abspath(os.path.join(os.path.dirname(__file__),'pca_transformer.pickle')), 'rb') as f:
     pca = pickle.load(f)
     
     
