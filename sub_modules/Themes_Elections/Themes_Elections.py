@@ -2,15 +2,29 @@
 import os
 import pickle
 import pandas as pd
+import streamlit as st
 from sentence_transformers import SentenceTransformer
-encoder = SentenceTransformer('intfloat/multilingual-e5-large')
 
-with open(os.path.abspath(os.path.join(os.path.dirname(__file__),'LR_Elections_Theme.pickle')), 'rb') as f:
-    clf = pickle.load(f)
-    
-with open(os.path.abspath(os.path.join(os.path.dirname(__file__),'pca_transformer.pickle')), 'rb') as f:
-    pca = pickle.load(f)
-    
+
+@st.cache
+def load_model():
+	  return SentenceTransformer('intfloat/multilingual-e5-large')
+
+
+encoder = load_model()
+
+@st.cache
+def load_clf():
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__),'LR_Elections_Theme.pickle')), 'rb') as f:
+       return pickle.load(f)
+
+clf = load_clf()
+
+@st.cache
+def load_pca():
+    with open(os.path.abspath(os.path.join(os.path.dirname(__file__),'pca_transformer.pickle')), 'rb') as f:
+        return pickle.load(f)
+pca = load_pca() 
     
     
     
